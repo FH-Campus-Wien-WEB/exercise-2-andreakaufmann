@@ -13,16 +13,18 @@ app.use(express.static(path.join(__dirname, 'files')));
 
 // Configure a 'get' endpoint for all movies..
 app.get('/movies', function (req, res) {
-  /* Task 1.2. Remove the line below and eturn the movies from 
-     the model as an array */
-  res.sendStatus(404)
+ res.json(Object.values(movieModel));
 })
 
 // Configure a 'get' endpoint for a specific movie
 app.get('/movies/:imdbID', function (req, res) {
-  /* Task 2.1. Remove the line below and add the 
-    functionality here */
-  res.sendStatus(404)
+  const id = req.params.imdbID;
+  const movie = movieModel[id];
+  if (movie) {
+    res.json(movie);
+  } else {
+    res.status(404).json({ error: "Movie not found" });
+  }
 })
 
 /* Task 3.1 and 3.2.
