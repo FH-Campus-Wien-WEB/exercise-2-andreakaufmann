@@ -4,10 +4,12 @@ function setMovie(movie) {
     const value = movie[name];
 
     if (name === "Genres") {
+      const value = movie.Genres || [];
       const options = element.options;
+
       for (let index = 0; index < options.length; index++) {
         const option = options[index];
-        option.selected = value.indexOf(option.value) >= 0;
+        option.selected = value.includes (option.value);
       }
     } else {
       element.value = value;
@@ -74,7 +76,7 @@ function putMovie() {
   xhr.setRequestHeader("Content-Type", "application/json");
 
   xhr.onload = function () {
-    if (xhr.status == 200 || xhr.status === 204) {
+    if (xhr.status == 200 || xhr.status === 201) {
       location.href = "index.html";
     } else {
       alert("Saving of movie data failed. Status code was " + xhr.status);

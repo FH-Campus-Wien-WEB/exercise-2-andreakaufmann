@@ -9,3 +9,18 @@ textarea {
 div {
   margin: 4px 0px;
 }
+
+form {
+  background-color: white;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 16px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+
+select[multiple] {
+  height: 140px;
+}
